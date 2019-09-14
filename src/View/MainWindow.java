@@ -40,7 +40,7 @@ public class MainWindow extends JFrame {
 		int rank = MPI.COMM_WORLD.Rank();
 		int size = MPI.COMM_WORLD.Size();
 		int procs = MPI.NUM_OF_PROCESSORS;
-		System.out.println("process: " + rank + "\n" + " size: " + size + "\n" + " processors: " + procs);
+		System.out.println("process: " + rank + "\n" + "size: " + size + "\n" + "processors: " + procs);
 		MPI.Finalize(); 		
 
 	    EventQueue.invokeLater(new Runnable() {

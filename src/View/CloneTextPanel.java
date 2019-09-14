@@ -2,16 +2,15 @@ package View;
 
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
-import java.awt.GridLayout;
+import javax.swing.JTextArea;
 import javax.swing.JButton;
+import java.awt.GridLayout;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
-
-import javax.swing.JTextArea;
-
-import View.FileManager;
 import java.awt.Color;
 import java.awt.Font;
+
+import View.FileManager;
 
 @SuppressWarnings("serial")
 public class CloneTextPanel extends JPanel {
@@ -39,11 +38,10 @@ public class CloneTextPanel extends JPanel {
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
-				textArea.setText(fileManager._content.toString());
-				fileManager.changeFileDir();				
+				textArea.setText(fileManager.getContent().toString());
+				fileManager.processFile();				
 			}
-		});
-		
+		});		
 		this.add(scrollable);		
 		this.add(loadFileButton);
 	}
