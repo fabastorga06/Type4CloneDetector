@@ -10,8 +10,7 @@ import java.nio.file.Paths;
 public class FileManager {
 	
 	private File _file;
-	protected static final String _projectDir = "C:\\workspace\\Type4CloneDetector"
-												+ "\\src\\Test\\";
+	protected static final String _projectDir = "C:\\workspace\\Type4CloneDetector\\src\\Test\\";
 	private JFileChooser _fileChooser = new JFileChooser();
 	private StringBuilder _content = new StringBuilder();
 	private String _fileName; 
@@ -35,16 +34,16 @@ public class FileManager {
 	
 	public String changeFileFormat() {
 		_fileName = _file.getName();
-        String[] arrName = _fileName.split("\\."); 
-        String newNameFile = arrName[0] + ".java";     
-        System.out.println("new file name: " + newNameFile);
-        return newNameFile;
+		String[] arrName = _fileName.split("\\."); 
+		String newNameFile = arrName[0] + ".java";     
+		System.out.println("new file name: " + newNameFile);
+		return newNameFile;
 	}
 	
 	public static void copyFileToNewDir(String from, String to) throws IOException {
-        Path src = Paths.get(from);
-        Path dest = Paths.get(to);
-        Files.copy(src.toFile(), dest.toFile());
+		Path src = Paths.get(from);
+		Path dest = Paths.get(to);
+		Files.copy(src.toFile(), dest.toFile());
 	}
 	
 	public void processFile() {		
@@ -54,7 +53,7 @@ public class FileManager {
 			copyFileToNewDir(_file.getAbsolutePath(), _projectDir + newFileName);
 		} catch (IOException e) {
 			e.getMessage();
-		    e.printStackTrace();
+			e.printStackTrace();
 		}				
 	} 
 }

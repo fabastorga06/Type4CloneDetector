@@ -9,6 +9,7 @@ import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.Font;
+import Controller.Controller;
 
 @SuppressWarnings("serial")
 public class GuiPanel extends JPanel {
@@ -25,7 +26,12 @@ public class GuiPanel extends JPanel {
 		detectClonesButton.setForeground(new Color(0, 0, 0));
 		detectClonesButton.setBackground(new Color(211, 211, 211));
 		detectClonesButton.setFont(new Font("Ubuntu", Font.BOLD, 14));
-		add(detectClonesButton);
+		detectClonesButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				Controller bridge = new Controller();
+				
+			}
+		});
 		
 		JButton cancelButton = new JButton("CANCEL");
 		cancelButton.setForeground(new Color(0, 0, 0));
@@ -36,6 +42,8 @@ public class GuiPanel extends JPanel {
 				System.exit(-1);
 			}
 		});		
+		
+		add(detectClonesButton);
 		add(cancelButton);
 	}
 
