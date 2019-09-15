@@ -13,9 +13,10 @@ public class FileManager {
 	protected static final String _projectDir = "C:\\workspace\\Type4CloneDetector\\src\\Test\\";
 	private JFileChooser _fileChooser = new JFileChooser();
 	private StringBuilder _content = new StringBuilder();
-	private String _fileName; 
+	private String _fileName, _newFileName; 
 	
 	public StringBuilder getContent() { return _content; }
+	public String getFileName() { return _newFileName; }
 		 
 	public void readFile() throws Exception {	  
 	  if(_fileChooser.showOpenDialog(null) == JFileChooser.APPROVE_OPTION){	   
@@ -49,8 +50,8 @@ public class FileManager {
 	public void processFile() {		
         /* if file copied successfully */
 		try {
-			String newFileName = changeFileFormat();
-			copyFileToNewDir(_file.getAbsolutePath(), _projectDir + newFileName);
+			_newFileName = changeFileFormat();
+			copyFileToNewDir(_file.getAbsolutePath(), _projectDir + _newFileName);
 		} catch (IOException e) {
 			e.getMessage();
 			e.printStackTrace();

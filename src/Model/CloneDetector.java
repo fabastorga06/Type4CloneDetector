@@ -2,9 +2,12 @@ package Model;
 
 public class CloneDetector {
 	
-	private static CloneDetector _cloneInstance = null; 	  
+	private static CloneDetector _cloneInstance = null; 	 
+	private FileChecker _checker;
    
-    private CloneDetector() { } 
+    private CloneDetector() { 
+    	_checker = new FileChecker();
+    } 
   
     /*    Singleton pattern   */
     public static CloneDetector getInstance() { 
@@ -15,6 +18,7 @@ public class CloneDetector {
     } 
     
     public void startCloneAnalysis() {
+    	_checker.checkFileMethods();
     	
     }
 }
