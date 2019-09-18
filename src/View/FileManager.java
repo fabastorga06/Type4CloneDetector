@@ -34,9 +34,9 @@ public class FileManager {
 	}
 	
 	public String changeFileFormat() {
-		_fileName = _file.getName();
-		String[] arrName = _fileName.split("\\."); 
-		String newNameFile = arrName[0] + ".java";     
+		//_fileName = _file.getName();
+		//String[] arrName = _fileName.split("\\."); 
+		String newNameFile = /* arrName[0] + */ "FileTest.java";     
 		System.out.println("new file name: " + newNameFile);
 		return newNameFile;
 	}

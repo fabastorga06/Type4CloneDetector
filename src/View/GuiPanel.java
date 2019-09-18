@@ -29,8 +29,7 @@ public class GuiPanel extends JPanel {
 		detectClonesButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				Controller bridge = new Controller();
-			
-				
+				bridge.initLogic();			
 			}
 		});
 		
