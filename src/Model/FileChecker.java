@@ -4,43 +4,59 @@ import java.lang.reflect.Constructor;
 import java.lang.reflect.Method;
 
 public class FileChecker extends ClassLoader {
+
+	private static String _className;
+	@SuppressWarnings("rawtypes")
+	private Class _returnParam;
 	
-	public FileChecker()  {}
-	
-	public void checkFileMethods() {
-		
-		invokeClassMethod("Test.FileTest", "function1");		
-		
-		
+	public FileChecker()  
+	{
+		_className = "Test.FileTest";
+		_returnParam = null;
 	}
 	
-	public void invokeClassMethod(String classBinName, String methodName) {
-        
-        try {
-             
-            // Create a new JavaClassLoader 
+	public void checkFileMethods() 
+	{
+		try {             
             ClassLoader classLoader = this.getClass().getClassLoader();
              
-            // Load the target class using its binary name
-            Class loadedMyClass = classLoader.loadClass(classBinName);
-             
-            System.out.println("Loaded class name: " + loadedMyClass.getName());
-             
-            // Create a new instance from the loaded class
-            Constructor constructor = loadedMyClass.getConstructor();
-            Object myClassObject = constructor.newInstance();
-             
-            // Getting the target method from the loaded class and invoke it using its name
-            Method method = loadedMyClass.getMethod(methodName);
-            System.out.println("Invoked method name: " + method.getName());
-            method.invoke(myClassObject);
+			@SuppressWarnings("rawtypes")
+			Class testClass = classLoader.loadClass(_className);             
+            System.out.println("Loaded class name: " + testClass.getName());         
+        
+			@SuppressWarnings({ "unchecked", "rawtypes" })
+		    Constructor constructor = testClass.getConstructor();
+            @SuppressWarnings("unused")
+			Object testObject = constructor.newInstance();
+            
+            System.out.println("\nMethods:");
+            Method methods[] = testClass.getDeclaredMethods();
+            for (Method method : methods) {
+            	System.out.println(" " + method.getName());
+            	invokeClassMethod(testClass, method.getName());
+            }            	             
  
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
         } catch (Exception e) {
             e.printStackTrace();
         }
+	}
+	
+	@SuppressWarnings("rawtypes")
+	public void invokeClassMethod(Class test, String method)
+	{
+            try {             
+            	@SuppressWarnings("unchecked")
+				Method _method = test.getMethod(method);
+            	_returnParam = _method.getReturnType(); 
+            	System.out.println("tipo retorno: " + _returnParam);
+            	int res = (int)_method.invoke(test.newInstance());
+            	System.out.println("resultado: " + res);
+     
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
          
     }
-
 }
