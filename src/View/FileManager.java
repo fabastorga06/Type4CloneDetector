@@ -13,7 +13,7 @@ public class FileManager {
 	protected static final String _projectDir = "C:\\workspace\\Type4CloneDetector\\src\\Test\\";
 	private JFileChooser _fileChooser = new JFileChooser();
 	private StringBuilder _content = new StringBuilder();
-	private String _fileName, _newFileName; 
+	private String _newFileName; 
 	
 	public StringBuilder getContent() { return _content; }
 	public String getFileName() { return _newFileName; }
@@ -26,7 +26,8 @@ public class FileManager {
 			   _content.append(input.nextLine());
 			   _content.append("\n");
 		   }
-		   input.close();
+		   input.close();		   
+		   		   
 	  }	  
 	  else {		  
 		  _content.append("No file was selected, try again");
@@ -34,9 +35,7 @@ public class FileManager {
 	}
 	
 	public String changeFileFormat() {
-		//_fileName = _file.getName();
-		//String[] arrName = _fileName.split("\\."); 
-		String newNameFile = /* arrName[0] + */ "FileTest.java";     
+		String newNameFile = "FileTest.java";     
 		System.out.println("new file name: " + newNameFile);
 		return newNameFile;
 	}
