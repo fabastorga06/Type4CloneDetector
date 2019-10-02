@@ -1,24 +1,23 @@
 package Test;
 
 public class FileTest {
+
+	public int functionA(String param, int x, int y) {
+		return x+y;
+	}
 	
-	public String function1() {
+	public String functionB() {
 	   int x = 1;
 	   int y = x + 5;
 	   return "hola soy un string";
 	}
 
-	public double function2() {
-	   double n = 5.3455;
-	   return n;
+	public boolean functionC(int value, boolean flag) {
+	   return flag;
 	}
 	
-	public boolean function3() {
+	public boolean functionD() {
 	   boolean flag = false;
 	   return !flag;
-	}
-	
-	public String function4(String param) {
-	   return "hola soy un " + param;
 	}		
 }

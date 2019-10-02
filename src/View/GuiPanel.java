@@ -17,7 +17,8 @@ public class GuiPanel extends JPanel {
 	/**
 	 * Create the panel.
 	 */
-	public GuiPanel() {
+	public GuiPanel() 
+	{
 		setBorder(new TitledBorder(new LineBorder(new Color(184, 207, 229)), "",
 				TitledBorder.LEADING, TitledBorder.TOP, null, new Color(51, 51, 51)));
 		setLayout(new GridLayout(0, 1, 5, 5));

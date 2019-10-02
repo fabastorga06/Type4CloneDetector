@@ -18,8 +18,9 @@ public class FileManager {
 	public StringBuilder getContent() { return _content; }
 	public String getFileName() { return _newFileName; }
 		 
-	public void readFile() throws Exception {	  
-	  if(_fileChooser.showOpenDialog(null) == JFileChooser.APPROVE_OPTION){	   
+	public void readFile() throws Exception
+	{	  
+	  if(_fileChooser.showOpenDialog(null) == JFileChooser.APPROVE_OPTION) {	   
 		   _file = _fileChooser.getSelectedFile();		   
 		   Scanner input = new Scanner(_file);		   
 		   while( input.hasNext() ) {
@@ -34,7 +35,8 @@ public class FileManager {
 	  }
 	}
 	
-	public String changeFileFormat() {
+	public String changeFileFormat() 
+	{
 		String newNameFile = "FileTest.java";     
 		System.out.println("new file name: " + newNameFile);
 		return newNameFile;
@@ -46,7 +48,8 @@ public class FileManager {
 		Files.copy(src.toFile(), dest.toFile());
 	}
 	
-	public void processFile() {		
+	public void processFile() 
+	{		
         /* if file copied successfully */
 		try {
 			_newFileName = changeFileFormat();

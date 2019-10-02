@@ -15,7 +15,8 @@ import View.FileManager;
 @SuppressWarnings("serial")
 public class CloneTextPanel extends JPanel {
 
-	public CloneTextPanel() {
+	public CloneTextPanel() 
+	{
 		setLayout(new GridLayout(2, 1, 5, 5));
 		
 		JButton loadFileButton = new JButton("LOAD FILE");
@@ -24,13 +25,14 @@ public class CloneTextPanel extends JPanel {
 		loadFileButton.setBackground(new Color(211, 211, 211));		
 		
 		final JTextArea textArea = new JTextArea();
+		final JScrollPane scrollable = new JScrollPane(textArea);
 		textArea.setForeground(new Color(0, 0, 0));
 		textArea.setFont(new Font("Ubuntu", Font.PLAIN, 11));
 		textArea.setBackground(new Color(255, 255, 255));
 		textArea.setEditable(false);
-		final JScrollPane scrollable = new JScrollPane(textArea);
 		
-		loadFileButton.addActionListener(new ActionListener() {
+		loadFileButton.addActionListener(new ActionListener() 
+		{
 			public void actionPerformed(ActionEvent arg0) {
 				FileManager fileManager = new FileManager();				
 				try {
