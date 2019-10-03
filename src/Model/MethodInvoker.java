@@ -10,10 +10,12 @@ public class MethodInvoker {
 	private Class[] _paramClasses;
 	private Object[] _paramValues;
 	private ParameterClasses _pc;
+	private ResultsTable _results;
 	
 	public MethodInvoker() 
 	{
 		_pc = new ParameterClasses();
+		_results = ResultsTable.getInstance();
 	}
 	
 	@SuppressWarnings({"unchecked", "rawtypes"})
@@ -26,9 +28,11 @@ public class MethodInvoker {
 		_method = test.getDeclaredMethod(methodName, _paramClasses);		
 		_paramValues = paramList.toArray(new Object[paramList.size()]);  
 		
-		System.out.println("Resultado: " + _method.invoke(test.newInstance(), _paramValues));
+		Object resultMethod = _method.invoke(test.newInstance(), _paramValues);
+		System.out.println("Resultado: " + resultMethod );
 		
-		// ALMACENAR RESULTADOS 
+		// ALMACENAR RESULTADOS
+		_results.putResultOnMap(methodName, resultMethod);		
 		
 	}	
 

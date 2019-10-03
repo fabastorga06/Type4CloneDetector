@@ -1,5 +1,7 @@
 package Model;
 
+import java.util.Map;
+
 public class CloneDetector {
 	
 	private FileChecker _checker;
@@ -11,9 +13,14 @@ public class CloneDetector {
     
     public void startCloneAnalysis() 
     {    
-		_checker.checkFileMethods();    	
+		_checker.checkFileMethods();    
+				
+		//Obtener tabla de resultados 
+		ResultsTable _results = ResultsTable.getInstance();
+		Map<String, Object> map = _results.getResultsMap();
+		System.out.println("Mapa de resultados: " + map );
 		
-		//Obtener tabla de resultados
-		// Hacer comparación
+		/* Hacer comparación de resultados */
+		
     }
 }
