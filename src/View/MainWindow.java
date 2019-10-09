@@ -14,7 +14,8 @@ public class MainWindow extends JFrame {
 
 	private JPanel contentPane;
 	
-	public MainWindow() {
+	public MainWindow(String[] args) 
+	{
 		setBackground(new Color(169, 169, 169));
 		setTitle("TYPE-4 CLONE DETECTOR");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -24,41 +25,24 @@ public class MainWindow extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(new BorderLayout(0, 0));
 		
-		GuiPanel guiPanel = new GuiPanel();
+		GuiPanel guiPanel = new GuiPanel(args);
 		contentPane.add(guiPanel, BorderLayout.EAST);
 		
 		CloneTextPanel cloneTextPanel = new CloneTextPanel();
 		contentPane.add(cloneTextPanel, BorderLayout.CENTER);
 	}
 
-	public static void main(String[] args) throws InterruptedException {		
-		
-		long startTime = System.nanoTime();
-
-		/* code being measured starts */		
-		MPI.Init(args);
-		int rank = MPI.COMM_WORLD.Rank();
-		int size = MPI.COMM_WORLD.Size();
-		int procs = MPI.NUM_OF_PROCESSORS;
-		System.out.println("process: " + rank + "\n" + "size: " + size + "\n" + "processors: " + procs);
-		MPI.Finalize(); 		
-
+	public static void main(String[] args) throws InterruptedException
+	{	
 	    EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					MainWindow frame = new MainWindow();
+					MainWindow frame = new MainWindow(args);
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
 			}
-		});			
-
-		/* the code being measured ends */
-		long endTime = System.nanoTime();
-		long timeElapsed = endTime - startTime;
-		System.out.println("Execution time in milliseconds : " + 
-								timeElapsed / 1000000);
-		
+		});				
 	}
 }

@@ -27,7 +27,7 @@ public class MethodParser {
 	{
 		 File inputFile = new File(_inputFileName);
 		 @SuppressWarnings("resource")
-		Scanner input = new Scanner(inputFile);
+		 Scanner input = new Scanner(inputFile);
 		 int index = 0;
 	
 		 while (input.hasNext()) {
@@ -46,7 +46,7 @@ public class MethodParser {
 				}
 			 }
 		 }
-		 
+		 		 
 		 for (int i = 1; i < _tokenList.size(); i+=2) {
 			 Object obj = _factory.getParameter(_tokenList.get(i));
 			 if (obj == null) {

@@ -17,7 +17,7 @@ public class GuiPanel extends JPanel {
 	/**
 	 * Create the panel.
 	 */
-	public GuiPanel() 
+	public GuiPanel(String[] args) 
 	{
 		setBorder(new TitledBorder(new LineBorder(new Color(184, 207, 229)), "",
 				TitledBorder.LEADING, TitledBorder.TOP, null, new Color(51, 51, 51)));
@@ -30,7 +30,7 @@ public class GuiPanel extends JPanel {
 		detectClonesButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				Controller bridge = new Controller();
-				bridge.initLogic();			
+				bridge.initLogic(args);			
 			}
 		});
 		

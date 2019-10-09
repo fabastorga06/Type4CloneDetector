@@ -29,10 +29,8 @@ public class MethodInvoker {
 		_paramValues = paramList.toArray(new Object[paramList.size()]);  
 		
 		Object resultMethod = _method.invoke(test.newInstance(), _paramValues);
-		System.out.println("Resultado: " + resultMethod );
 		
-		// ALMACENAR RESULTADOS
-		_results.putResultOnMap(methodName, resultMethod);		
+		_results.putResultOnMap(_method, resultMethod);		
 		
 	}	
 

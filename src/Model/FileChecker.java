@@ -17,29 +17,26 @@ public class FileChecker extends ClassLoader {
 		_invoker = null;
 	}
 	
+	@SuppressWarnings({ "rawtypes", "unchecked", "unused" })
 	public void checkFileMethods() 
 	{
 		try {             
             ClassLoader classLoader = this.getClass().getClassLoader();
              
-			@SuppressWarnings("rawtypes")
 			Class testClass = classLoader.loadClass(_className);             
-            System.out.println("Loaded class name: " + testClass.getName());         
         
-			@SuppressWarnings({ "unchecked", "rawtypes" })
 		    Constructor constructor = testClass.getConstructor();
-            @SuppressWarnings("unused")
 			Object testObject = constructor.newInstance();
             
             Method methods[] = testClass.getDeclaredMethods();
-            for (Method method : methods) {
-            	System.out.println("-------------------------------------------------------------");
-            	System.out.println("Method: " + method.getName());
+            for (Method method : methods) 
+            {
             	invokeClassMethod(testClass, method.getName());
             }            	             
  
         } catch (ClassNotFoundException e) {
-        	System.out.println("Your file is not executable, please try with other java file...");
+        	System.out.println("Your file is not executable, "
+        								+ "please try with other java file...");
         } catch (Exception e) {
             e.printStackTrace();
         }

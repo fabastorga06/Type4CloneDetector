@@ -4,9 +4,9 @@ import Model.CloneDetector;
 
 public class Controller {
 	
-	public void initLogic() {		
+	public void initLogic(String[] args) {		
 		CloneDetector detector = new CloneDetector(); 
-		detector.startCloneAnalysis();
+		detector.startCloneAnalysis(args);
 	}
 	
 	public void setupParallelism() {
