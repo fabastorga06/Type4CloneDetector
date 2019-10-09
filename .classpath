@@ -7,5 +7,6 @@
 	<classpathentry exported="true" kind="lib" path="miglayout15-swing.jar"/>
 	<classpathentry exported="true" kind="lib" path="C:/Users/Crimson/Documents/mpj-v0_44/lib/mpj.jar"/>
 	<classpathentry kind="lib" path="C:/Users/Crimson/Documents/guava-28.1-jre.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Crimson/Desktop/itextpdf-5.5.9.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

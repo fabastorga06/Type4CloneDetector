@@ -3,10 +3,14 @@ package View;
 import javax.swing.JPanel;
 import java.awt.GridLayout;
 import javax.swing.border.TitledBorder;
+
+import com.itextpdf.text.DocumentException;
+
 import javax.swing.border.LineBorder;
 import java.awt.Color;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
+import java.io.FileNotFoundException;
 import java.awt.event.ActionEvent;
 import java.awt.Font;
 import Controller.Controller;
@@ -30,7 +34,12 @@ public class GuiPanel extends JPanel {
 		detectClonesButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				Controller bridge = new Controller();
-				bridge.initLogic(args);			
+				try {
+					bridge.initLogic(args);
+				} catch (FileNotFoundException | DocumentException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}			
 			}
 		});
 		

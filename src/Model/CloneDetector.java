@@ -1,5 +1,9 @@
 package Model;
 
+import java.io.FileNotFoundException;
+
+import com.itextpdf.text.DocumentException;
+
 import mpi.MPI;
 
 public class CloneDetector {
@@ -11,7 +15,7 @@ public class CloneDetector {
     	_checker = new FileChecker();
     } 
     
-    public void startCloneAnalysis(String[] args) 
+    public void startCloneAnalysis(String[] args) throws FileNotFoundException, DocumentException 
     {    
     	
     	long startTime = System.nanoTime();
@@ -24,7 +28,6 @@ public class CloneDetector {
 		System.out.println("process: " + rank + "\n" + "size: " + size
 								+ "\n" + "processors: " + procs);  
 		
-    	
 		_checker.checkFileMethods();   
 		
 		/* Hacer comparación de resultados y generar reporte */

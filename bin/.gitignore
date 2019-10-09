@@ -1,5 +1,4 @@
 /bin/
-/Controller/
-/Model/
-/Test/
 /View/
+/Model/
+/Controller/
