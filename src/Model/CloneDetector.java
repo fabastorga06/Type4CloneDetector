@@ -28,12 +28,9 @@ public class CloneDetector {
 		System.out.println("process: " + rank + "\n" + "size: " + size
 								+ "\n" + "processors: " + procs);  
 		
-		_checker.checkFileMethods();   
-		
-		/* Hacer comparación de resultados y generar reporte */
+		_checker.checkFileMethods();   		
 		ResultComparator _comparator = new ResultComparator();	
-		_comparator.compareResults();
-		
+		_comparator.compareResults();		
 		
 		MPI.Finalize(); 		
 		/* the code being measured ends */

@@ -30,15 +30,11 @@ public class ResultComparator {
 		    	if (mainMethod != methods.get(j)) {
 		    		if (results.get(i).toString().equals(results.get(j).toString())) 
 		    		{	
-		    			System.out.println("¡Clon Tipo-4 Detectado!");	
 		    			clones.add(new ArrayList<String>());
 		    			clones.get(index).add(mainMethod.toString());
 		    			clones.get(index).add(methods.get(j).toString());	    	
 		    			index++;
 		    		}
-		    		System.out.println("resultado 1: " + results.get(i));
-		    		System.out.println("resultado 2: " + results.get(j));
-		    		System.out.println("----------------------------------------------------");
 		    	}		    		
 		    }
 		}
@@ -46,7 +42,8 @@ public class ResultComparator {
 		try 
 		{
 			_report.writeInfoReport(clones);
-		} catch (FileNotFoundException | DocumentException e) {
+		} 
+		catch (FileNotFoundException | DocumentException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}

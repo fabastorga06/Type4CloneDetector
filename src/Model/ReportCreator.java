@@ -20,11 +20,12 @@ public class ReportCreator {
 	
 	private Document _document;
 	private Font _font;
+	private static int _cols = 2;
 
 	public ReportCreator() 
 	{
 		_document = new Document();
-		_font = FontFactory.getFont(FontFactory.COURIER, 16, BaseColor.BLACK);
+		_font = FontFactory.getFont(FontFactory.COURIER, 20, BaseColor.BLACK);
 	}
 	
 	public void writeInfoReport(List<List<String>> clones) throws DocumentException, FileNotFoundException 
@@ -34,8 +35,8 @@ public class ReportCreator {
 		_document.add(new Paragraph("Type-4 Clones Report", _font));
 		_document.add(new Paragraph(new Date().toString()));
 		_document.add(new Paragraph("  "));
-		_document.add(new Paragraph("  "));
-		PdfPTable clones_table = new PdfPTable(clones.size());
+		
+		PdfPTable clones_table = new PdfPTable(_cols);				
 		addTableHeader(clones_table);
 		addRows(clones_table, clones);		
 		_document.add(clones_table);		
@@ -47,7 +48,7 @@ public class ReportCreator {
 	    Stream.of("Method Evaluated", "Method Cloned")
 	      .forEach(columnTitle -> {
 	        PdfPCell header = new PdfPCell();
-	        header.setBackgroundColor(BaseColor.YELLOW);
+	        header.setBackgroundColor(BaseColor.LIGHT_GRAY);
 	        header.setBorderWidth(1);
 	        header.setPhrase(new Phrase(columnTitle));
 	        table.addCell(header);
@@ -58,7 +59,7 @@ public class ReportCreator {
 	{
 		for (int i = 0; i < clones.size(); ++i) 
 		{
-			for (int j = 0; j < 2; ++j) 
+			for (int j = 0; j < _cols; ++j) 
 			{
 				 table.addCell(clones.get(i).get(j));
 			}
