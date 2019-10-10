@@ -18,7 +18,7 @@ public class FileTest {
 	
 	public boolean functionD(){
 	   boolean flag = false;
-	   return flag;
+	   return !flag;
 	}	
 	
 	public static int highestPower2(int x) {

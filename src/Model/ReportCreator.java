@@ -2,12 +2,18 @@ package Model;
 
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
+import java.util.Date;
+import java.util.List;
+import java.util.stream.Stream;
 import com.itextpdf.text.BaseColor;
-import com.itextpdf.text.Chunk;
 import com.itextpdf.text.Document;
 import com.itextpdf.text.DocumentException;
 import com.itextpdf.text.Font;
 import com.itextpdf.text.FontFactory;
+import com.itextpdf.text.Paragraph;
+import com.itextpdf.text.Phrase;
+import com.itextpdf.text.pdf.PdfPCell;
+import com.itextpdf.text.pdf.PdfPTable;
 import com.itextpdf.text.pdf.PdfWriter;
 
 public class ReportCreator {
@@ -21,15 +27,41 @@ public class ReportCreator {
 		_font = FontFactory.getFont(FontFactory.COURIER, 16, BaseColor.BLACK);
 	}
 	
-	/* SINGLETON */
-	
-	/* generates PDF file with clones information */	
-	public void writeInfoReport(String info) throws DocumentException, FileNotFoundException 
+	public void writeInfoReport(List<List<String>> clones) throws DocumentException, FileNotFoundException 
 	{		
 		PdfWriter.getInstance(_document, new FileOutputStream("type-4_clones_report.pdf"));
-		_document.open();
-		Chunk chunk = new Chunk(info, _font);		 
-		_document.add(chunk);
+		_document.open();		
+		_document.add(new Paragraph("Type-4 Clones Report", _font));
+		_document.add(new Paragraph(new Date().toString()));
+		_document.add(new Paragraph("  "));
+		_document.add(new Paragraph("  "));
+		PdfPTable clones_table = new PdfPTable(clones.size());
+		addTableHeader(clones_table);
+		addRows(clones_table, clones);		
+		_document.add(clones_table);		
 		_document.close();
+	}
+		
+	private void addTableHeader(PdfPTable table) 
+	{
+	    Stream.of("Method Evaluated", "Method Cloned")
+	      .forEach(columnTitle -> {
+	        PdfPCell header = new PdfPCell();
+	        header.setBackgroundColor(BaseColor.YELLOW);
+	        header.setBorderWidth(1);
+	        header.setPhrase(new Phrase(columnTitle));
+	        table.addCell(header);
+	    });
+	}
+	
+	private void addRows(PdfPTable table, List<List<String>> clones)
+	{
+		for (int i = 0; i < clones.size(); ++i) 
+		{
+			for (int j = 0; j < 2; ++j) 
+			{
+				 table.addCell(clones.get(i).get(j));
+			}
+		}
 	}
 }
