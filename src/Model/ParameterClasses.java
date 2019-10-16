@@ -21,14 +21,34 @@ public class ParameterClasses {
 			{
 				oc[i] = Integer.TYPE;
 			}
-			if (paramlist.get(i) instanceof Boolean) 
+			else if (paramlist.get(i) instanceof Boolean) 
 			{
 				oc[i] = Boolean.TYPE;
 			}
-			if (paramlist.get(i) instanceof Double) 
+			else if (paramlist.get(i) instanceof Double) 
 			{
 				oc[i] = Double.TYPE;
 			}
+			else if (paramlist.get(i) instanceof Byte) 
+			{
+				oc[i] = Byte.TYPE;
+			}
+			else if (paramlist.get(i) instanceof Short) 
+			{
+				oc[i] = Short.TYPE;
+			}
+			else if (paramlist.get(i) instanceof Long) 
+			{
+				oc[i] = Long.TYPE;
+			}
+			else if (paramlist.get(i) instanceof Float) 
+			{
+				oc[i] = Float.TYPE;
+			}
+			else if (paramlist.get(i) instanceof Character) 
+			{
+				oc[i] = Character.TYPE;
+			}			
 		}		
 		
 		return oc;

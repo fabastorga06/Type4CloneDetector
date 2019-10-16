@@ -30,7 +30,9 @@ public class MethodInvoker {
 		
 		Object resultMethod = _method.invoke(test.newInstance(), _paramValues);
 		
-		_results.putResultOnMap(_method, resultMethod);		
+		//System.out.println("resultado: " + _method.getName() + " : " +resultMethod.toString());
+		
+		_results.putResultOnMap(_method, resultMethod);	 	
 		
 	}	
 

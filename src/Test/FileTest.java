@@ -10,7 +10,7 @@ public class FileTest {
 	   int x = 1;
 	   int y = x + 5;
 	   return "hola soy un string " + y;
-	}
+	}	
 
 	public boolean functionC(int value, boolean flag){
 	   return flag;
@@ -19,7 +19,7 @@ public class FileTest {
 	public boolean functionD(){
 	   boolean flag = false;
 	   return !flag;
-	}	
+	}
 	
 	public static int highestPower2(int x) {
 	    int tmp = x;

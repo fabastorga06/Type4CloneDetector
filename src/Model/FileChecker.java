@@ -1,6 +1,7 @@
 package Model;
 
 import java.lang.reflect.Constructor;
+import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.ArrayList;
 
@@ -35,6 +36,9 @@ public class FileChecker extends ClassLoader {
         } catch (ClassNotFoundException e) {
         	System.out.println("Your file is not executable, "
 							+ "please try with other java file...");
+        } catch (InvocationTargetException e) {
+            System.out.println("Syntax error in your file, please check it...");
+            System.out.println(e.getCause());
         } catch (Exception e) {
             e.printStackTrace();
         }

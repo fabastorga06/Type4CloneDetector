@@ -8,12 +8,14 @@ import Model.CloneDetector;
 
 public class Controller {
 	
-	public void initLogic(String[] args) throws FileNotFoundException, DocumentException {		
+	public void initLogic(String[] args) throws FileNotFoundException, DocumentException 
+	{		
 		CloneDetector detector = new CloneDetector(); 
 		detector.startCloneAnalysis(args);
 	}
 	
-	public void setupParallelism() {
+	public void setupParallelism() 
+	{
 		
 	}
 
