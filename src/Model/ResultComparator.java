@@ -1,12 +1,10 @@
 package Model;
 
-import java.io.FileNotFoundException;
 import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-import com.itextpdf.text.DocumentException;
 
 public class ResultComparator {
 
@@ -17,7 +15,6 @@ public class ResultComparator {
 	{
 		ResultsTable _results = ResultsTable.getInstance();
 		Map<Method, Object> _map = _results.getResultsMap();
-		ReportCreator _report = new ReportCreator();
 		List<List<String>> clones = new ArrayList<List<String>>();
 		int index = 0;
 		
@@ -41,9 +38,13 @@ public class ResultComparator {
 		
 		try 
 		{
+			ReportCreator _report = new ReportCreator();
+			CsvCreator _csv = new CsvCreator();
+			
 			_report.writeInfoReport(clones);
+			_csv.generateCsvFile(clones);
 		} 
-		catch (FileNotFoundException | DocumentException e) {
+		catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
