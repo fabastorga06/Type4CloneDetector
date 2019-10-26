@@ -39,4 +39,17 @@ public class FileTest {
 	    x = x | (x >>> 16);
 	    return (x - (x >>> 1)) & 0xff;
 	}
+	
+	public int addOneToY() {
+	   int x = 1;
+	   int y = x + 5;
+	   return y;
+	}
+	
+	
+	public int foo() {
+	   int n = 5;
+	   return ++n;
+	}	
+	
 }

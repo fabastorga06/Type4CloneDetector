@@ -1,5 +1,6 @@
 package Model;
 
+import java.io.FileNotFoundException;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
@@ -19,10 +20,11 @@ public class FileChecker extends ClassLoader {
 	}
 	
 	@SuppressWarnings({ "rawtypes", "unchecked", "unused" })
-	public void checkFileMethods() 
+	public void checkFileMethods() throws ClassNotFoundException, NoSuchMethodException,
+	SecurityException, InstantiationException, IllegalAccessException, 
+	IllegalArgumentException, InvocationTargetException, FileNotFoundException 
 	{
-		try 
-		{             
+            
 			ClassLoader classLoader = this.getClass().getClassLoader();
 			Class testClass = classLoader.loadClass(_className);   
 			Constructor constructor = testClass.getConstructor();
@@ -31,23 +33,15 @@ public class FileChecker extends ClassLoader {
 			
 			for (Method method : methods) 
 				invokeClassMethod(testClass, method.getName());
-			           	             
- 
-        } catch (ClassNotFoundException e) {
-        	System.out.println("Your file is not executable, "
-							+ "please try with other java file...");
-        } catch (InvocationTargetException e) {
-            System.out.println("Syntax error in your file, please check it...");
-            System.out.println(e.getCause());
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+			           	            
 	}
 	
 	@SuppressWarnings("rawtypes")
-	public void invokeClassMethod(Class test, String methodName)
+	public void invokeClassMethod(Class test, String methodName) throws FileNotFoundException, 
+	NoSuchMethodException, SecurityException, IllegalAccessException, IllegalArgumentException, 
+	InvocationTargetException, InstantiationException
 	{
-        try {           	
+               	
         	_parser = new MethodParser(methodName);
         	_parser.parseMethodSign();
         	
@@ -57,8 +51,6 @@ public class FileChecker extends ClassLoader {
         	_invoker = new MethodInvoker();
         	_invoker.invokeMethodByParams(test, methodName, paramList);
  
-        } catch (Exception e) {
-            e.printStackTrace();
-        }         
+                
     }
 }

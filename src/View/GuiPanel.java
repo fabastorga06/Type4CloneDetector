@@ -1,27 +1,36 @@
+/**
+ * Class that builds some user interface components
+ * @author: Fabián Astorga Cerdas
+ */
+ 
 package View;
 
 import javax.swing.JPanel;
 import java.awt.GridLayout;
 import javax.swing.border.TitledBorder;
-
 import com.itextpdf.text.DocumentException;
-
 import javax.swing.border.LineBorder;
 import java.awt.Color;
 import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import java.awt.event.ActionListener;
 import java.io.FileNotFoundException;
 import java.awt.event.ActionEvent;
 import java.awt.Font;
 import Controller.Controller;
+import Model.Constants;
 
 @SuppressWarnings("serial")
-public class GuiPanel extends JPanel {
+public class GuiPanel extends JPanel implements Constants {
+	
+	String output_message, msg;
+	int msg_type;
 
 	/**
-	 * Create the panel.
+	 * Create the graphic user interface panel with buttons.
 	 */
-	public GuiPanel(String[] args) 
+	public GuiPanel() 
 	{
 		setBorder(new TitledBorder(new LineBorder(new Color(184, 207, 229)), "",
 				TitledBorder.LEADING, TitledBorder.TOP, null, new Color(51, 51, 51)));
@@ -33,11 +42,23 @@ public class GuiPanel extends JPanel {
 		detectClonesButton.setFont(new Font("Ubuntu", Font.BOLD, 14));
 		detectClonesButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				Controller bridge = new Controller();
-				try {
-					bridge.initLogic(args);
-				} catch (FileNotFoundException | DocumentException e) {
-					// TODO Auto-generated catch block
+				Controller _bridge = Controller.getInstance();
+				try
+				{					
+					if (_bridge.initLogic() ) { 
+						output_message = OK_MESSAGE;
+						msg_type = JOptionPane.INFORMATION_MESSAGE;
+						msg = "DONE";
+					}
+					else { 
+						output_message = ERROR_MESSAGE; 
+						msg_type = JOptionPane.ERROR_MESSAGE;
+						msg = "ERROR";
+					}
+						
+					JOptionPane.showMessageDialog(new JFrame(), output_message, msg, msg_type);
+				} 
+				catch (FileNotFoundException | DocumentException e) {
 					e.printStackTrace();
 				}			
 			}

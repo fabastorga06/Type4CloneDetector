@@ -1,43 +1,38 @@
 package Model;
 
-import java.io.FileNotFoundException;
-
-import com.itextpdf.text.DocumentException;
-
-import mpi.MPI;
+import java.lang.reflect.InvocationTargetException;
 
 public class CloneDetector {
 	
 	private FileChecker _checker;
+	boolean _ok;
    
     public CloneDetector() 
     { 
     	_checker = new FileChecker();
+    	_ok = false;
     } 
     
-    public void startCloneAnalysis(String[] args) throws FileNotFoundException, DocumentException 
-    {    
-    	
-    	long startTime = System.nanoTime();
-
-		/* code being measured starts */		
-		MPI.Init(args);
-		int rank = MPI.COMM_WORLD.Rank();
-		int size = MPI.COMM_WORLD.Size();
-		int procs = MPI.NUM_OF_PROCESSORS;
-		System.out.println("process: " + rank + "\n" + "size: " + size
-								+ "\n" + "processors: " + procs);  
+    public boolean startCloneAnalysis()
+    {
+    	try {
+			_checker.checkFileMethods();
+			ResultComparator _comparator = new ResultComparator();	
+			_comparator.compareResults();	
+			_ok = true;
+		} 
+		catch (ClassNotFoundException e) {
+			_ok = false;
+	    	System.out.println("Your file is not executable, "
+							+ "please try with another Java file...");
+	    } catch (InvocationTargetException e) {
+	    	_ok = false;
+	        System.out.println("Syntax error in your file, please check it...");
+	    } catch (Exception e) {
+	    	_ok = false;
+	        e.printStackTrace();
+	    }
 		
-		_checker.checkFileMethods();   		
-		ResultComparator _comparator = new ResultComparator();	
-		_comparator.compareResults();		
-		
-		MPI.Finalize(); 		
-		/* the code being measured ends */
-		long endTime = System.nanoTime();
-		long timeElapsed = endTime - startTime;
-		System.out.println("Execution time in milliseconds : " + 
-								timeElapsed / 1000000);
-		
+		return _ok;		
     }
 }

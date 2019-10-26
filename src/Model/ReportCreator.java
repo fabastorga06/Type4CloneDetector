@@ -16,7 +16,7 @@ import com.itextpdf.text.pdf.PdfPCell;
 import com.itextpdf.text.pdf.PdfPTable;
 import com.itextpdf.text.pdf.PdfWriter;
 
-public class ReportCreator {
+public class ReportCreator implements Constants {
 	
 	private Document _document;
 	private Font _font;
@@ -30,9 +30,9 @@ public class ReportCreator {
 	
 	public void writeInfoReport(List<List<String>> clones) throws DocumentException, FileNotFoundException 
 	{		
-		PdfWriter.getInstance(_document, new FileOutputStream("type-4_clones_report.pdf"));
+		PdfWriter.getInstance(_document, new FileOutputStream(PDF_FILE));
 		_document.open();		
-		_document.add(new Paragraph("Type-4 Clones Report", _font));
+		_document.add(new Paragraph(PDF_TITLE, _font));
 		_document.add(new Paragraph(new Date().toString()));
 		_document.add(new Paragraph("  "));
 		

@@ -1,4 +1,9 @@
-package View;
+/**
+ * Class that manages loaded file
+ * @author: Fabián Astorga Cerdas
+ */
+
+package Model;
 
 import java.util.Scanner;
 import javax.swing.JFileChooser;
@@ -7,10 +12,9 @@ import com.google.common.io.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 
-public class FileManager {
+public class FileManager implements Constants {
 	
 	private File _file;
-	protected static final String _projectDir = "C:\\workspace\\Type4CloneDetector\\src\\Test\\";
 	private JFileChooser _fileChooser = new JFileChooser();
 	private StringBuilder _content = new StringBuilder();
 	private String _newFileName; 
@@ -35,25 +39,16 @@ public class FileManager {
 	  }
 	}
 	
-	public String changeFileFormat() 
-	{
-		String newNameFile = "FileTest.java";     
-		System.out.println("new file name: " + newNameFile);
-		return newNameFile;
-	}
-	
 	public static void copyFileToNewDir(String from, String to) throws IOException {
 		Path src = Paths.get(from);
 		Path dest = Paths.get(to);
-		Files.copy(src.toFile(), dest.toFile());
-	}
-	
+		Files.copy(src.toFile(), dest.toFile() );
+	}	
+		
 	public void processFile() 
 	{		
-        /* if file copied successfully */
 		try {
-			_newFileName = changeFileFormat();
-			copyFileToNewDir(_file.getAbsolutePath(), _projectDir + _newFileName);
+			copyFileToNewDir(_file.getAbsolutePath(), PROJECT_DIR + NEW_NAME_FILE);
 		} catch (IOException e) {
 			e.getMessage();
 			e.printStackTrace();

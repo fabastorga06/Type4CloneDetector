@@ -1,3 +1,11 @@
+/**
+
+ * Main class that inits the program.
+ * @author: Fabián Astorga Cerdas
+ * @version: 1.0
+
+ */
+
 package View;
 
 import java.awt.BorderLayout;
@@ -7,14 +15,15 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import java.awt.Color;
 
-import mpi.*;
-
 @SuppressWarnings("serial")
 public class MainWindow extends JFrame {
 
 	private JPanel contentPane;
 	
-	public MainWindow(String[] args) 
+	/**
+	 * Class constructor. Inits the graphical user interface.
+	 */
+	public MainWindow() 
 	{
 		setBackground(new Color(169, 169, 169));
 		setTitle("TYPE-4 CLONE DETECTOR");
@@ -25,19 +34,27 @@ public class MainWindow extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(new BorderLayout(0, 0));
 		
-		GuiPanel guiPanel = new GuiPanel(args);
+		GuiPanel guiPanel = new GuiPanel();
 		contentPane.add(guiPanel, BorderLayout.EAST);
 		
 		CloneTextPanel cloneTextPanel = new CloneTextPanel();
 		contentPane.add(cloneTextPanel, BorderLayout.CENTER);
 	}
-
+	
+	/**
+	 * Main function
+	 * @param args
+	 * @throws InterruptedException
+	 */
 	public static void main(String[] args) throws InterruptedException
 	{	
-	    EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					MainWindow frame = new MainWindow(args);
+	    EventQueue.invokeLater(new Runnable() 
+	    {
+			public void run() 
+			{
+				try 
+				{
+					MainWindow frame = new MainWindow();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();

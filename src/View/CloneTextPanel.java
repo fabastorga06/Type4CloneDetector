@@ -1,8 +1,17 @@
+/**
+ * Class that builds some user interface components
+ * @author: Fabián Astorga Cerdas
+ */
+
 package View;
 
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
+
+import Controller.Controller;
+import Model.FileManager;
+
 import javax.swing.JButton;
 import java.awt.GridLayout;
 import java.awt.event.ActionListener;
@@ -10,11 +19,13 @@ import java.awt.event.ActionEvent;
 import java.awt.Color;
 import java.awt.Font;
 
-import View.FileManager;
-
 @SuppressWarnings("serial")
 public class CloneTextPanel extends JPanel {
 
+	/**
+	 * Create the graphic user interface panel with file viewer 
+	 * and load file functionality.
+	 */
 	public CloneTextPanel() 
 	{
 		setLayout(new GridLayout(2, 1, 5, 5));
@@ -34,14 +45,14 @@ public class CloneTextPanel extends JPanel {
 		loadFileButton.addActionListener(new ActionListener() 
 		{
 			public void actionPerformed(ActionEvent arg0) {
-				FileManager fileManager = new FileManager();				
+				Controller _bridge = Controller.getInstance();			
 				try {
-					fileManager.readFile();
+					_bridge.callFileManager();
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
-				textArea.setText(fileManager.getContent().toString());
-				fileManager.processFile();				
+				textArea.setText(_bridge.getFileContent());
+				_bridge.startFileManager();		
 			}
 		});		
 		this.add(scrollable);		

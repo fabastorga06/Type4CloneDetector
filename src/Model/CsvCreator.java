@@ -5,7 +5,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.PrintWriter;
 
-public class CsvCreator {
+public class CsvCreator implements Constants {
 	
 	public CsvCreator() {}
 	
@@ -13,8 +13,7 @@ public class CsvCreator {
 	{
 		try 
 		{
-			 PrintWriter pw= new PrintWriter(new File("C:\\\\workspace\\\\Type4CloneDetector"
-													+ "\\type-4_clones_report.csv"));
+			 PrintWriter pw= new PrintWriter(new File(CSV_PATH));
 			 StringBuilder sb=new StringBuilder();
 			 sb.append("Method Evaluated");
 			 sb.append(",	");

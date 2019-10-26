@@ -28,10 +28,11 @@ public class MethodInvoker {
 		_method = test.getDeclaredMethod(methodName, _paramClasses);		
 		_paramValues = paramList.toArray(new Object[paramList.size()]);  
 		
-		Object resultMethod = _method.invoke(test.newInstance(), _paramValues);
+		if(!_method.isAccessible()) {
+			_method.setAccessible(true);
+		}	
 		
-		//System.out.println("resultado: " + _method.getName() + " : " +resultMethod.toString());
-		
+		Object resultMethod = _method.invoke(test.newInstance(), _paramValues);		
 		_results.putResultOnMap(_method, resultMethod);	 	
 		
 	}	
