@@ -31,8 +31,7 @@ public class FileManager implements Constants {
 			   _content.append(input.nextLine());
 			   _content.append("\n");
 		   }
-		   input.close();		   
-		   		   
+		   input.close();		      		   
 	  }	  
 	  else {		  
 		  _content.append("No file was selected, try again");

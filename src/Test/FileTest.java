@@ -12,8 +12,7 @@ public class FileTest {
 	   return "hola soy un string " + y;
 	}	
 
-	@SuppressWarnings("unused")
-	private boolean functionC(int value, boolean flag){
+	public boolean functionC(int value, boolean flag){
 	   return flag;
 	}
 	
@@ -32,8 +31,7 @@ public class FileTest {
 	    return answer;
 	}
 	
-	@SuppressWarnings("unused")
-	private static int flp2(int x) {
+	public static int flp2(int x) {
 	    x = x | (x >>> 1);
 	    x = x | (x >>> 2);
 	    x = x | (x >>> 4);
@@ -42,8 +40,7 @@ public class FileTest {
 	    return (x - (x >>> 1)) & 0xff;
 	}
 	
-	@SuppressWarnings("unused")
-	private int addOneToY() {
+	public int addOneToY() {
 	   int x = 1;
 	   int y = x + 5;
 	   return y;

@@ -1,3 +1,8 @@
+/**
+ * Class that initializes all clone detection process
+ * @author: Fabián Astorga Cerdas
+ */
+
 package Model;
 
 import java.lang.reflect.InvocationTargetException;
@@ -5,14 +10,21 @@ import java.lang.reflect.InvocationTargetException;
 public class CloneDetector {
 	
 	private FileChecker _checker;
-	boolean _ok;
+	private boolean _ok;
    
+	/**
+	 * Class constructor
+	 */
     public CloneDetector() 
     { 
     	_checker = new FileChecker();
     	_ok = false;
     } 
     
+    /**
+     * Start clones detection process with unit tests 
+     * @return flag indicates if process was completed successfully
+     */
     public boolean startCloneAnalysis()
     {
     	try {
