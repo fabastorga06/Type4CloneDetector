@@ -1,3 +1,9 @@
+/**
+ * Class that creates a CSV file
+ * @author: Fabián Astorga Cerdas
+ */
+
+
 package Model;
 
 import java.util.List;
@@ -6,9 +12,11 @@ import java.io.FileNotFoundException;
 import java.io.PrintWriter;
 
 public class CsvCreator implements Constants {
-	
-	public CsvCreator() {}
-	
+		
+	/**
+	 * Creates CSV output file with the detected clones
+	 * @param Matrix with the clones 
+	 */
 	public void generateCsvFile(List<List<String>> clones) 
 	{
 		try 
@@ -16,7 +24,7 @@ public class CsvCreator implements Constants {
 			 PrintWriter pw= new PrintWriter(new File(CSV_PATH));
 			 StringBuilder sb=new StringBuilder();
 			 sb.append("Method Evaluated");
-			 sb.append(",	");
+			 sb.append(",		");
 			 sb.append("Method Cloned");
 			 sb.append("\r\n");
 			   

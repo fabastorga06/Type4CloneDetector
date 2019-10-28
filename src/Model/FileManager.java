@@ -19,9 +19,16 @@ public class FileManager implements Constants {
 	private StringBuilder _content = new StringBuilder();
 	private String _newFileName; 
 	
+	/**
+	 * Get the text file content 
+	 * @return file content
+	 */
 	public StringBuilder getContent() { return _content; }
-	public String getFileName() { return _newFileName; }
 		 
+	/**
+	 * Read all file content and save it into the StringBuilder
+	 * @throws Exception
+	 */
 	public void readFile() throws Exception
 	{	  
 	  if(_fileChooser.showOpenDialog(null) == JFileChooser.APPROVE_OPTION) {	   
@@ -38,12 +45,23 @@ public class FileManager implements Constants {
 	  }
 	}
 	
-	public static void copyFileToNewDir(String from, String to) throws IOException {
+	/**
+	 * Create an equal file copy and put it in the package Test 
+	 * in project folder 
+	 * @param from file original path
+	 * @param to Test package path
+	 * @throws IOException
+	 */
+	public static void copyFileToNewDir(String from, String to) throws IOException 
+	{
 		Path src = Paths.get(from);
 		Path dest = Paths.get(to);
 		Files.copy(src.toFile(), dest.toFile() );
 	}	
 		
+	/**
+	 * Call copyFileToNewDir method and handle exceptions
+	 */
 	public void processFile() 
 	{		
 		try {

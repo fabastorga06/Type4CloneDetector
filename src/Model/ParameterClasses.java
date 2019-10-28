@@ -1,11 +1,20 @@
+/** 
+ * Class made as factory pattern design
+ * @author: Fabian Astorga Cerdas
+ */
+
 package Model;
 
 import java.util.ArrayList;
 
 public class ParameterClasses {
 	
-	public ParameterClasses() { }
-
+	/**
+	 * Generate classes objects according the input object list 
+	 * in order to execute each method with Java Reflection
+	 * @param paramlist object list with data types parameters objects
+	 * @return Class list with the data types classes instances
+	 */
 	@SuppressWarnings("rawtypes")
 	public Class[] getParameterClasses(ArrayList<Object> paramlist) 
 	{

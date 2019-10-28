@@ -1,3 +1,8 @@
+/**
+ * Class that makes a PDF report with the detection information
+ * @author: Fabian Astorga Cerdas
+ */
+
 package Model;
 
 import java.io.FileNotFoundException;
@@ -22,12 +27,21 @@ public class ReportCreator implements Constants {
 	private Font _font;
 	private static int _cols = 2;
 
+	/**
+	 * Class constructor
+	 */
 	public ReportCreator() 
 	{
 		_document = new Document();
 		_font = FontFactory.getFont(FontFactory.COURIER, 20, BaseColor.BLACK);
 	}
 	
+	/**
+	 * Writes detected clones line by line inside a table
+	 * @param Matrix with the detected clones
+	 * @throws DocumentException
+	 * @throws FileNotFoundException
+	 */
 	public void writeInfoReport(List<List<String>> clones) throws DocumentException, FileNotFoundException 
 	{		
 		PdfWriter.getInstance(_document, new FileOutputStream(PDF_FILE));
@@ -43,6 +57,10 @@ public class ReportCreator implements Constants {
 		_document.close();
 	}
 		
+	/**
+	 * Creates the header of the table
+	 * @param table clones table
+	 */
 	private void addTableHeader(PdfPTable table) 
 	{
 	    Stream.of("Method Evaluated", "Method Cloned")
@@ -55,6 +73,11 @@ public class ReportCreator implements Constants {
 	    });
 	}
 	
+	/**
+	 * Add rows with the detected clones in the table
+	 * @param table clones table
+	 * @param clones Matrix with the clones
+	 */
 	private void addRows(PdfPTable table, List<List<String>> clones)
 	{
 		for (int i = 0; i < clones.size(); ++i) 

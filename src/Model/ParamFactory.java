@@ -1,9 +1,17 @@
+/** 
+ * Class made as factory pattern design
+ * @author: Fabian Astorga Cerdas
+ */
+
 package Model;
 
 public class ParamFactory<T> {
 	
-	public ParamFactory() {}
-	
+	/**
+	 * Generate data types tests in order to check the methods function
+	 * @param ptype data type string of each parameter of the method
+	 * @return data type with the set value
+	 */
 	@SuppressWarnings("unchecked")
 	public T getParameter(String ptype)
 	{		
@@ -14,7 +22,7 @@ public class ParamFactory<T> {
 				param = (T) new Integer(10);
 				break;
 			case "String":
-				param = (T) new String("string de prueba");
+				param = (T) new String("this is just a test");
 				break;
 			case "double":
 				param = (T) new Double(2.75594039220);

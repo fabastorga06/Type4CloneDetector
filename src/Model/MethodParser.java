@@ -1,3 +1,9 @@
+/**
+ * Class that parse each method sign and extracts its parameters types strings
+ * and generate data types objects 
+ * @author: Fabian Astorga Cerdas
+ */
+
 package Model;
 
 import java.io.File;
@@ -5,16 +11,18 @@ import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public class MethodParser {
+public class MethodParser implements Constants {
 	
 	private String _methodName;
-	private int _paramThreshold = 10;
+	private int _paramThreshold = 15;
 	private ArrayList<Object> _paramList;
 	private ArrayList<String> _tokenList;
 	private ParamFactory<Object> _factory = null;
-	private String _inputFileName = "C:\\workspace\\Type4CloneDetector"
-									+ "\\src\\Test\\FileTest.java";
 	
+	/**
+	 * Constructor class
+	 * @param methodName name of the method to parse it
+	 */
 	public MethodParser(String methodName)
 	{
 		this._methodName = methodName;
@@ -23,9 +31,13 @@ public class MethodParser {
 		this._factory = new ParamFactory<Object>();
 	}
 	
+	/**
+	 * Parse method sign in order to extract data types
+	 * @throws FileNotFoundException
+	 */
 	public void parseMethodSign() throws FileNotFoundException 
 	{
-		 File inputFile = new File(_inputFileName);
+		 File inputFile = new File(INPUT_FILE);
 		 @SuppressWarnings("resource")
 		 Scanner input = new Scanner(inputFile);
 		 int index = 0;
@@ -56,6 +68,10 @@ public class MethodParser {
 		 }		 
 	}
 	
+	/**
+	 * Get parameters list of each method
+	 * @return Parameters list with type data object
+	 */
 	public ArrayList<Object> getParamList() 
 	{
 		return this._paramList;

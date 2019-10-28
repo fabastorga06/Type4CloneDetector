@@ -1,3 +1,9 @@
+/**
+ * Class that verifies the input file and creates an 
+ * exact copy for later analysis
+ * @author: Fabián Astorga Cerdas
+ */
+
 package Model;
 
 import java.io.FileNotFoundException;
@@ -12,6 +18,9 @@ public class FileChecker extends ClassLoader {
 	private MethodParser _parser;
 	private MethodInvoker _invoker;
 	
+	/**
+	 * Class constructor
+	 */
 	public FileChecker()  
 	{
 		_className = "Test.FileTest";
@@ -19,6 +28,17 @@ public class FileChecker extends ClassLoader {
 		_invoker = null;
 	}
 	
+	/**
+	 * Creates a class instance of the file a get their methods
+	 * @throws ClassNotFoundException
+	 * @throws NoSuchMethodException
+	 * @throws SecurityException
+	 * @throws InstantiationException
+	 * @throws IllegalAccessException
+	 * @throws IllegalArgumentException
+	 * @throws InvocationTargetException
+	 * @throws FileNotFoundException
+	 */
 	@SuppressWarnings({ "rawtypes", "unchecked", "unused" })
 	public void checkFileMethods() throws ClassNotFoundException, NoSuchMethodException,
 	SecurityException, InstantiationException, IllegalAccessException, 
@@ -36,6 +56,19 @@ public class FileChecker extends ClassLoader {
 			           	            
 	}
 	
+	/**
+	 * analyze the signature of each method to verify its types of parameters 
+	 * and make the invocation automatically with Java Reflection
+	 * @param test file class 
+	 * @param methodName in order to execute it 
+	 * @throws FileNotFoundException
+	 * @throws NoSuchMethodException
+	 * @throws SecurityException
+	 * @throws IllegalAccessException
+	 * @throws IllegalArgumentException
+	 * @throws InvocationTargetException
+	 * @throws InstantiationException
+	 */
 	@SuppressWarnings("rawtypes")
 	public void invokeClassMethod(Class test, String methodName) throws FileNotFoundException, 
 	NoSuchMethodException, SecurityException, IllegalAccessException, IllegalArgumentException, 
@@ -49,8 +82,6 @@ public class FileChecker extends ClassLoader {
         	paramList = _parser.getParamList();
         	
         	_invoker = new MethodInvoker();
-        	_invoker.invokeMethodByParams(test, methodName, paramList);
- 
-                
+        	_invoker.invokeMethodByParams(test, methodName, paramList);        
     }
 }

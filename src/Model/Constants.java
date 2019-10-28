@@ -16,4 +16,5 @@ public interface Constants
 			+ "Check PDF/CSV report!";
 	String ERROR_MESSAGE = "Something went wrong, try again...";
 	String ICON_IMG = "C:\\workspace\\Type4CloneDetector\\src\\View\\clones.png";
+	String INPUT_FILE = "C:\\workspace\\Type4CloneDetector\\src\\Test\\FileTest.java";
 }

@@ -1,3 +1,9 @@
+/**
+ * Class that verifies if a couple of methods are type-4 clones
+ * by functional similarity
+ * @author: Fabian Astorga Cerdas
+ */
+
 package Model;
 
 import java.lang.reflect.Method;
@@ -7,8 +13,10 @@ import java.util.Map;
 
 public class ResultComparator {
 
-	public ResultComparator() {}
-	
+	/**
+	 * 	Algorithm that compares each result of a method with the rest of
+	 * them in order to detect functional similarity
+	 */
 	@SuppressWarnings({ "unchecked", "rawtypes" })
 	public void compareResults()
 	{
@@ -44,10 +52,7 @@ public class ResultComparator {
 			_csv.generateCsvFile(clones);
 		} 
 		catch (Exception e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
-		}
-		
-		
+		}		
 	}	
 }

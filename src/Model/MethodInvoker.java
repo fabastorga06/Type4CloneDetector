@@ -1,3 +1,9 @@
+/** 
+ * Class that handle with the invocation of the method
+ * that composes the file
+ * @author: Fabian Astorga Cerdas
+ */
+
 package Model;
 
 import java.lang.reflect.InvocationTargetException;
@@ -12,12 +18,27 @@ public class MethodInvoker {
 	private ParameterClasses _pc;
 	private ResultsTable _results;
 	
+	/**
+	 * Class constructor
+	 */
 	public MethodInvoker() 
 	{
 		_pc = new ParameterClasses();
 		_results = ResultsTable.getInstance();
 	}
 	
+	/**
+	 * Evaluate each method and invoke it in order to know its functionality
+	 * @param test File class instance
+	 * @param methodName method name string
+	 * @param paramList List with data types objects of the method parameters 
+	 * @throws NoSuchMethodException 
+	 * @throws SecurityException
+	 * @throws IllegalAccessException
+	 * @throws IllegalArgumentException
+	 * @throws InvocationTargetException
+	 * @throws InstantiationException
+	 */
 	@SuppressWarnings({"unchecked", "rawtypes"})
 	public void invokeMethodByParams(Class test, String methodName, ArrayList<Object> paramList) 
 			throws NoSuchMethodException, SecurityException, IllegalAccessException, IllegalArgumentException, 

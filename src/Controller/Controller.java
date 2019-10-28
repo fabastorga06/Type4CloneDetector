@@ -65,7 +65,7 @@ public class Controller {
 	
 	/**
 	 * Return the file content in order to show it in the viewer
-	 * @return
+	 * @return file content
 	 */
 	public String getFileContent()
 	{
