@@ -2,7 +2,7 @@ package Test;
 
 public class FileTest {
 
-	public int functionA(String param, int x, int y){
+	public int doSomething(int x, int y){
 		return x+y;
 	}
 	
@@ -12,7 +12,7 @@ public class FileTest {
 	   return "hola soy un string " + y;
 	}	
 
-	public boolean functionC(int value, boolean flag){
+	public boolean returnFlag(boolean flag){
 	   return flag;
 	}
 	
@@ -51,5 +51,48 @@ public class FileTest {
 	   int n = 5;
 	   return ++n;
 	}	
-	
+
+    private int fact(int value) {
+        int i, j=1;
+        for (i=1; i<=value; i++)
+            j=j*i;
+        return j;
+    }
+
+    public int factorial(int n) {
+        if (n==0) 
+            return 1;
+        else
+            return n * factorial(n-1);
+    }
+
+    private int addTotal() {
+        int total = 0;
+        for (int i=1; i < 12; i++)
+            total += i;
+        return total;
+    }
+
+    private int totalRes() {
+        boolean notdone = true;
+        int i = 1;
+        int res = 1;
+        while(notdone) {
+            res += i;
+            i++;
+            notdone = i < 12;
+        }
+        return res; 
+    } 
+    
+    public int methodx() {
+    	int a = 2;
+    	int b = a +9 ;
+    	return b;
+    }  	
+    
+    private int vv() {
+    	int n = 10;
+    	return ++n;
+    }
 }

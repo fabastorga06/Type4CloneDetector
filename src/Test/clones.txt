@@ -2,7 +2,7 @@ package Test;
 
 public class FileTest {
 
-	public int doSomething(String param, int x, int y){
+	public int doSomething(int x, int y){
 		return x+y;
 	}
 	
@@ -52,9 +52,9 @@ public class FileTest {
 	   return ++n;
 	}	
 
-    private int fact() {
+    private int fact(int value) {
         int i, j=1;
-        for (i=1; i<=VALUE; i++)
+        for (i=1; i<=value; i++)
             j=j*i;
         return j;
     }
@@ -76,12 +76,23 @@ public class FileTest {
     private int totalRes() {
         boolean notdone = true;
         int i = 1;
-        res = 1;
+        int res = 1;
         while(notdone) {
             res += i;
             i++;
             notdone = i < 12;
         }
         return res; 
-    }   	
+    } 
+    
+    public int methodx() {
+    	int a = 2;
+    	int b = a +9 ;
+    	return b;
+    }  	
+    
+    private int vv() {
+    	int n = 10;
+    	return ++n;
+    }
 }

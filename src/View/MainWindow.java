@@ -37,6 +37,7 @@ public class MainWindow extends javax.swing.JFrame implements Constants {
      */
     public MainWindow() {
         initComponents();
+        this.setTitle("Type-4 Clone Detector");
     }
 
     /**

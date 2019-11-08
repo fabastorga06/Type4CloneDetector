@@ -1,7 +1,11 @@
-Method Evaluated,	Method Cloned
+Method Evaluated,		Method Cloned
+public int Test.FileTest.methodx(),	private int Test.FileTest.vv()
+private int Test.FileTest.vv(),	public int Test.FileTest.methodx()
+public int Test.FileTest.factorial(int),	private int Test.FileTest.fact(int)
 public static int Test.FileTest.highestPower2(int),	public static int Test.FileTest.flp2(int)
+public boolean Test.FileTest.returnFlag(boolean),	public boolean Test.FileTest.functionD()
+public static int Test.FileTest.flp2(int),	public static int Test.FileTest.highestPower2(int)
 public int Test.FileTest.addOneToY(),	public int Test.FileTest.foo()
 public int Test.FileTest.foo(),	public int Test.FileTest.addOneToY()
-public boolean Test.FileTest.functionD(),	public boolean Test.FileTest.functionC(int,boolean)
-public boolean Test.FileTest.functionC(int,boolean),	public boolean Test.FileTest.functionD()
-public static int Test.FileTest.flp2(int),	public static int Test.FileTest.highestPower2(int)
+public boolean Test.FileTest.functionD(),	public boolean Test.FileTest.returnFlag(boolean)
+private int Test.FileTest.fact(int),	public int Test.FileTest.factorial(int)
